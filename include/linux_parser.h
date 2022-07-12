@@ -3,6 +3,8 @@
 
 #include <fstream>
 #include <regex>
+#include <map>
+#include <unordered_map>
 #include <string>
 
 namespace LinuxParser {
@@ -19,8 +21,8 @@ const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
 
 // System
-float MemoryUtilization();
-long UpTime();
+std::unordered_map<std::string, float> MemoryUtilization();
+std::vector<long> UpTime();
 std::vector<int> Pids();
 int TotalProcesses();
 int RunningProcesses();
@@ -28,6 +30,7 @@ std::string OperatingSystem();
 std::string Kernel();
 
 // CPU
+/*
 enum CPUStates {
   kUser_ = 0,
   kNice_,
@@ -40,11 +43,16 @@ enum CPUStates {
   kGuest_,
   kGuestNice_
 };
-std::vector<std::string> CpuUtilization();
+*/
+
+int NumberCPUs();
+std::vector<std::vector<float>> CpuUtilization();
+/*
 long Jiffies();
 long ActiveJiffies();
 long ActiveJiffies(int pid);
 long IdleJiffies();
+*/
 
 // Processes
 std::string Command(int pid);
@@ -52,6 +60,7 @@ std::string Ram(int pid);
 std::string Uid(int pid);
 std::string User(int pid);
 long int UpTime(int pid);
+std::vector<float> CpuUtilization(int pid);
 };  // namespace LinuxParser
 
 #endif

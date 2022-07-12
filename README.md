@@ -1,41 +1,92 @@
-# CppND-System-Monitor
+Udacity C++ Nanodegree Project 2: System Monitor (Personal Solution)
+================
 
-Starter code for System Monitor Project in the Object Oriented Programming Course of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
-
-Follow along with the classroom lesson to complete the project!
-
-![System Monitor](images/monitor.png)
-
-## Udacity Linux Workspace
-[Udacity](https://www.udacity.com/) provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. 
-
-You are welcome to develop this project on your local machine, and you are not required to use the Udacity Workspace. However, the Workspace provides a convenient and consistent Linux development environment we encourage you to try.
+This repository contains the submission code for the System Monitor
+project in the Object Oriented Programming Course of the [Udacity C++
+Nanodegree
+Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
 ## ncurses
-[ncurses](https://www.gnu.org/software/ncurses/) is a library that facilitates text-based graphical output in the terminal. This project relies on ncurses for display output.
 
-Within the Udacity Workspace, `.student_bashrc` automatically installs ncurses every time you launch the Workspace.
+[ncurses](https://www.gnu.org/software/ncurses/) is a library that
+facilitates text-based graphical output in the terminal. This project
+relies on ncurses for display output.
 
-If you are not using the Workspace, install ncurses within your own Linux environment: `sudo apt install libncurses5-dev libncursesw5-dev`
+To install ncurses within a Linux environment:
+`sudo apt install libncurses5-dev libncursesw5-dev`
 
 ## Make
-This project uses [Make](https://www.gnu.org/software/make/). The Makefile has four targets:
-* `build` compiles the source code and generates an executable
-* `format` applies [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html) to style the source code
-* `debug` compiles the source code and generates an executable, including debugging symbols
-* `clean` deletes the `build/` directory, including all of the build artifacts
 
-## Instructions
+This project uses [Make](https://www.gnu.org/software/make/). The
+Makefile has four targets: \* `build` compiles the source code and
+generates an executable \* `format` applies
+[ClangFormat](https://clang.llvm.org/docs/ClangFormat.html) to style the
+source code \* `debug` compiles the source code and generates an
+executable, including debugging symbols \* `clean` deletes the `build/`
+directory, including all of the build artifacts
 
-1. Clone the project repository: `git clone https://github.com/udacity/CppND-System-Monitor-Project-Updated.git`
+## Objective
 
-2. Build the project: `make build`
+The starter code contained the building blocks to get the app running.
+The following image shows its initial state:
 
-3. Run the resulting executable: `./build/monitor`
-![Starting System Monitor](images/starting_monitor.png)
+<p align="center">
+<img src="images/starting_monitor.png" title="System Monitor - Initial State">
+</p>
 
-4. Follow along with the lesson.
+The objective of the project was to get the app up to the following
+state:
 
-5. Implement the `System`, `Process`, and `Processor` classes, as well as functions within the `LinuxParser` namespace.
+<p align="center">
+<img src="images/monitor.png" title="System Monitor - Objective">
+</p>
 
-6. Submit!
+## Submission
+
+Besides the baseline objectives, this submission included the following
+optional improvements:
+
+### System
+
+-   CPU usage is calculated within an interval of one second
+-   CPU usage is shown per CPU. The bar changes colors depending of the
+    CPU usage (green \< yellow \< red)
+-   Memory usage is split into Memory and Swap, just like htop. The
+    monitor also follows the color code of htop and displays the memory
+    in GB as well
+-   Both the CPU and Memory progress bars adapt to the window size
+-   Idle time (Combined of alls CPUs) is included
+
+### Processes:
+
+-   CPU usage is also calculated w.r.t the usage of each second
+-   Interactive Controls added
+
+### Interactivity
+
+-   UP/DOWN arrows let you navigate through the processes if the list
+    that is displayed is smaller than the total number of PIDs active
+-   The “h” key lets you sort the processes according to: PID, RAM, or
+    CPU usage
+-   Pressing “q” quits the program
+
+### Command Line Arguments
+
+-   One argument is accepted: a number \> 0 that indicates the number of
+    processes to display. Without any argument, then this number is
+    equal to 10. If the argument is invalid, a proper error message is
+    displayed
+
+### Submitted version
+
+<p align="center">
+<img src="images/result.png" title="System Monitor - Submitted version">
+</p>
+
+## How to run
+
+1.  Clone the project repository
+
+2.  Build the project: `make build`
+
+3.  Run the resulting executable: `./build/monitor`

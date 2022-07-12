@@ -3,25 +3,36 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "process.h"
 #include "processor.h"
 
 class System {
  public:
-  Processor& Cpu();                   // TODO: See src/system.cpp
-  std::vector<Process>& Processes();  // TODO: See src/system.cpp
-  float MemoryUtilization();          // TODO: See src/system.cpp
-  long UpTime();                      // TODO: See src/system.cpp
-  int TotalProcesses();               // TODO: See src/system.cpp
-  int RunningProcesses();             // TODO: See src/system.cpp
-  std::string Kernel();               // TODO: See src/system.cpp
-  std::string OperatingSystem();      // TODO: See src/system.cpp
+  std::vector<Processor> Cpu();       
+  std::vector<Process>& Processes();  
+  std::unordered_map<std::string, float>
+  MemoryUtilization();            
+  std::vector<long> UpTime();    
+  int TotalProcesses();          
+  int RunningProcesses();       
+  std::string Kernel();          
+  std::string OperatingSystem();  
+  int n_cpu_;
+  void UpdateCpu();
+  static int sort_by;
+  static int offset;
+  static std::string sort_by_str;
 
-  // TODO: Define any necessary private members
+  int NProcesses();
+
+  System();
+
  private:
-  Processor cpu_ = {};
+  std::vector<Processor> cpu_ = {};
   std::vector<Process> processes_ = {};
+  std::vector<int> pids_;
 };
 
 #endif
